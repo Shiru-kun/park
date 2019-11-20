@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+     <link rel="stylesheet" href="default_layout.css"/>
+ 
+	<title>List of Owners</title>
+</head>
+
+<body>
+	
+<div id="menu" >
+        <div class="inout" onclick="inOut()">
+                <span></span>
+                 <span></span>
+                 <span></span> 
+             </div>
+    <ul class="list">
+      <li>  
+            <a onclick="owner()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+                    Owner</i>
+                  </a>
+                  <div id="owner" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+                    <a th:href="register" class="w3-bar-item w3-button">Register</a>
+                    <a th:href="search" class="w3-bar-item w3-button">Plus info</a>                   
+                  </div>
+
+
+      </li>
+      <li>            <a onclick="car()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+            Car</i>
+          </a>
+          <div id="car" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+            <a href="car" class="w3-bar-item w3-button">Register</a>
+            <a href="searchCar" class="w3-bar-item w3-button">Plus info</a>                   
+          </div>
+</li>
+       <li>            <a onclick="parkAndPay()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+            Park and Pay</i>
+          </a>
+          <div id="parkAndPay" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+            <a href="parkRegister" class="w3-bar-item w3-button">Register</a>
+            <a href="searchParkers" class="w3-bar-item w3-button">Plus info</a>                   
+          </div>
+</li>
+    </ul>
+
+
+</div>
+	<div id="content"> 
+	<table class="tabled">
+	<tr>
+	
+	<thead>
+	
+	<th >Name</th>
+	<th>Telephone</th>
+	<th>Address</th>
+	<th>operation</th>
+	</thead>
+	
+	</tr>
+	<tbody>
+	<tr th:each="owner : ${owners}">
+	  
+	  <td scope="col"><span th:text="${owner.name}"></span></td>
+	  <td scope="col"><span th:text="${owner.telephone}"></span></td>
+	  <td scope="col"><span th:text="${owner.address}"></span></td>
+       <td><a th:href="${(#mvc.url('OC#delete').arg(0, owner.id)).build()}"> delete</a> | <a th:href="${(#mvc.url('OC#updateform').arg(0, owner.id)).build()}"> update</a>
+ 	</td>	
+	</tr>
+	</tbody>
+	</table></div>
+<!--  https://youtu.be/lIgFe20dYq4 modal spring boot -->
+ <script src="menu.js">
+</script>
+</body>
+</html>

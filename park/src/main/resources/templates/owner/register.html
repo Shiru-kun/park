@@ -1,0 +1,43 @@
+<!DOCTYPE html >
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<head><th:block th:replace="default"></th:block></head>
+
+    </head>
+<body>
+    
+
+			
+     	<div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"  style="margin-top:-700px;">
+            
+            <div class="styleForm">
+            <div class="alert alert-info" role="alert" th:if="${not #strings.isEmpty(msg)}" >
+            <span  th:text="${msg}"></span>
+            </div>
+            
+    <form method="post" th:object="${owner}"  id="formOwner" th:action="registerOwner">
+<div class="alert alert-danger alert-dismissible" role="alert" th:if="${#fields.hasAnyErrors()}" >
+<th:block th:each="error : ${#fields.detailedErrors()}">
+   <span  th:text="${error.message}"></span>
+</th:block>
+</div>
+<fieldset>
+<legend class="">Owner Register</legend>
+<label>Name</label> <br/><input type="text" name= "name" th:field="*{name}" placeholder="Name" /><br/>
+<label>Telephone</label><br/> <input type="text" name= "telephone" th:field="*{telephone}" placeholder="Telephone"/><br/>
+<label>Address</label> <br/><input type="text" name="address" th:field="*{address}" placeholder="Address"/> <br/>
+<input type="submit" class="btn btn-light lg" value="Save"/>
+
+</fieldset>
+</form>
+</div>
+</div>
+
+<script src="menu.js">
+</script> 
+</body>
+</html>
+
+

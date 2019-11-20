@@ -1,0 +1,90 @@
+<!DOCTYPE html >
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Parking</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+     <link rel="stylesheet" href="default_layout.css">
+
+    </head>
+<body>
+    
+     
+<div id="menu" >
+        <div class="inout" onclick="inOut()">
+                <span></span>
+                 <span></span>
+                 <span></span> 
+             </div>
+    <ul class="list">
+      <li>  
+            <a onclick="owner()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+                    Owner</i>
+                  </a>
+                  <div id="owner" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+                    <a th:href="register" class="w3-bar-item w3-button">Register</a>
+                    <a th:href="search" class="w3-bar-item w3-button">Plus info</a>                   
+                  </div>
+
+
+      </li>
+      <li>            <a onclick="car()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+            Car</i>
+          </a>
+          <div id="car" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+            <a href="car" class="w3-bar-item w3-button">Register</a>
+            <a href="searchCar" class="w3-bar-item w3-button">Plus info</a>                   
+          </div>
+</li>
+       <li>            <a onclick="parkAndPay()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+            Park and Pay
+          </a>
+          <div id="parkAndPay" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+            <a href="parkRegister" class="w3-bar-item w3-button">Register</a>
+            <a href="searchCar" class="w3-bar-item w3-button">Plus info</a>                   
+          </div>
+</li>
+    </ul>
+
+
+</div>
+<div id="content">
+         <div class="styleForm">
+        
+     	<form method="post"  th:object="${parkplace}" th:action="@{placeparkSave}" id="formplace" >
+			<fieldset>
+<legend>Car</legend>
+				<label>Area</label>
+				<br/>
+					<select th:field="*{place}" class="custom-select">
+								 <option value=""  disabled selected></option>
+								 <option th:each="place : ${places}" th:value="${place}" th:text="${place}" ></option>
+				           	</select>
+				<br/>	
+				<label>Car</label>
+				<br/>
+				<select class="custom-select" name="idOfCar">
+								 <option value=""  disabled selected></option>
+								 <option th:each="car :${cars}" th:value="${car.id}" th:text="${car.plate}+' '+${car.brand}" ></option>
+				           	</select>
+				<br/>	
+	            <br/>
+	                   <input type="submit" value="Save">
+	                   
+									
+					</fieldset>
+					
+			</form>
+
+ </div>
+			</div>
+
+
+<script src="menu.js">
+</script>
+</body>
+
+
+</html>

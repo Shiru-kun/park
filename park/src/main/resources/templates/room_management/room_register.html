@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html  lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+ <head><th:block th:replace="default">
+ 
+ </th:block>
+
+<link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+
+
+ </head>
+</head>
+<body>
+
+
+		<div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"  style="margin-top:-700px;">
+	<div class="container">
+          <th:block th:include="errorMessage"></th:block>
+			<form method="post"  th:object="${room}" th:action="@{saveRoom}" id="roomForm" >
+			<fieldset>
+<legend>Room</legend>
+
+ <input type="text" name="type" id="inpt"> <br>
+ <input  type="hidden" style="margin-bottom: 5px"  id="day" name="data" data-multiple-dates=31 data-inline=true readonly="readonly" required="required"></input>
+
+<a th:href="rooms">days on room</a>	
+			
+	                   <input type="submit" class="btn btn-danger text-white" value="Save">
+	                   
+									
+					</fieldset>
+					
+			</form>
+
+</div>
+</div>
+<script src="menu.js">
+</script> 
+<script th:src="@{jquery-3.3.1.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/datepicker.min.js}"></script>
+   	<script>
+   	
+
+   	
+   	var datepick = $('#day').datepicker().data('datepicker');
+datepick.update({
+	    position: "bottom left",
+	   	dateFormat: "dd-mm-yyyy",
+	   	minDate: new Date(),
+	   	inline: true,
+		language:"",
+		multipleDatesSeparator: ";"
+	});
+
+   	   </script>
+</body>
+</html>
+
+

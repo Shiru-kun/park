@@ -1,0 +1,43 @@
+<!doctype html5>
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" />
+<title>bla bla bla</title>
+</head>
+
+<body class="text-center">
+
+
+
+
+	<div class="container" style="margin: auto;">
+		<form method="post" th:action="@{/login}" id="formLogin">
+
+			<div class="alert alert-danger is-error" role="alert" th:if="${#bools.isTrue(param.error)}">Username and password doesnt
+				match</div>
+			<label for="username">User</label> <br>
+			<input type="text" name="username" id="userinput" placeholder="username" required><br> 
+			
+			<label for="password">Pass</label><br>
+			<input type="password" name="password" placeholder="password" id="passinput" required><br>
+			
+			<input type="submit" class="btn btn-danger text-white" value="SEND">
+
+		</form>
+	</div>
+
+</body>
+</html>

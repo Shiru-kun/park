@@ -1,0 +1,60 @@
+<!DOCTYPE html >
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+ <head><th:block th:replace="default">
+ 
+ </th:block>
+<link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+
+
+ </head>
+<body>
+
+	<div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"  style="margin-top:-700px;">
+	<div class="container">
+
+		<table class="tabled" id="tab">
+			<thead>
+			<tr>
+			
+
+				<th>Room Type</th>
+				<th>Days</th>
+			    <th> testeModal </th>
+				<th>Operation</th>
+			</tr>
+
+			</thead>
+
+			<tbody>
+				<tr th:each="room : ${rooms}">
+					<td scope="col"><span th:text="${room.type}"></span></td>
+					<td scope="col"><span th:text="${room.roomday}"></span></td>
+					<td scope="col">null</td>
+					
+					<td>  <a th:href="${(#mvc.url('RC#delete').arg(0, room.id)).build()}" >D</a> | <a th:href="${(#mvc.url('RC#edited').arg(0, room.id)).build()}"> U</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+
+	
+				
+</div>
+
+
+<script>
+$(document).ready( function () {
+    $('#tab').DataTable();
+} );
+
+
+
+
+</script>
+
+</body>
+</html>

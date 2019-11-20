@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<head>
+<th:block th:replace="default"></th:block>
+</head>
+</head>
+<body>
+
+
+	<div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"
+		style="margin-top: -700px;">
+
+		<form id="formTeste" th:object="${car}">
+
+			<div id="changethis" th:fragment="temp">
+			<p th:text="${car.brand}" ></p>
+			</div>
+
+			<input type="text" id="txt"> <input type="submit"
+				id="clickb" value="click me">
+
+
+
+		</form>
+
+	</div>
+
+
+	<script type="text/javascript" th:inline="javascript">/*<![CDATA[*/
+
+var nameId=document.getElementById("txt").value;
+var form=document.getElementById("formTeste");
+
+
+$('#clickb').click(function(event){
+
+	alert(nameId);
+	event.preventDefault();
+ 	$.ajax({
+ 		method:'POST',
+ 		url:'/testeajax',
+ 		data:{nameId},
+ 		success: function(response){ 
+			
+             $('#changethis').html(response);
+          	                 }
+		
+		
+ 	});
+	
+	
+ });
+
+/*]]>*/
+</script>
+</body>
+</html>
+
+

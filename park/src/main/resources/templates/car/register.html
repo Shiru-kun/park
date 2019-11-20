@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html  lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head><th:block th:replace="default"></th:block></head>
+
+<body>
+ 
+<!-- th:if="${errorMessage} neq null}" -->
+	<div class="col-md-9 ml-sm-auto col-lg-10  pt-3 px-4"  style="margin-top:-700px;">
+      	  <th:block th:include="errorMessage" ></th:block>
+		
+			<form method="post"  th:object="${car}" th:action="@{carSave}" id="formCar" enctype="multipart/form-data" >
+			<fieldset>
+<legend>Car</legend>
+				<label>Brand</label>
+				<br/>
+					<select th:field="*{brand}" class="custom-select">
+								 <option value=""  disabled selected></option>
+								 <option th:each="brand : ${brands}" th:value="${brand}" th:text="${brand}" ></option>
+				           	</select>
+				<br/>	
+				<label>Plate</label>
+				<br/>	
+				<input th:field="*{plate}" class="input100" type="text" name="plate" placeholder="ex. AAA-777">
+				<br/>	
+	<label>Owner</label>
+	<br/>
+				
+      <select  name="ownerID" id="owner">
+                  <option value="">choose the owner</option>
+                  <option   th:each="owner : ${owners}"
+                            th:value="${owner.id}"
+                            th:text="${owner.name}">
+                   </option>
+      </select> 
+       
+	            <br/>
+	            
+	            <select  name="parkID" id="park">
+                  <option value="">choose the park stay</option>
+                  <option   th:each="park : ${parks}"
+                            th:value="${park.id}"
+                            th:text="${park.day}+' '+${park.moneyAwaited}">
+                   </option>
+      </select> 
+       
+	            <br/>
+	
+<!-- startkwella  -->
+
+<div class="js-upload uk-placeholder uk-text-center">
+ <span uk-icon="icon: cloud-upload"></span>
+	<img id="imgPreview" style="text-align: center;width: 250px; height: 300px;" th:src="*{fotoUrl}" class="img-responsive"/>
+	<input type="file" onchange="setSrcImg(event)" name="img" id="filePhoto" th:value="*{fotoUrl}" accept="image/*"/>
+</div>
+
+
+
+<!-- endKwella -->
+
+<br>
+<input class="btn btn-primary" onclick="check()" value="Save">
+	                   
+				
+
+									
+					</fieldset>
+					
+	
+
+
+</form>
+
+</div>
+
+<script>
+
+ var file = document.getElementById('filePhoto').value;
+
+
+function setSrcImg(event){
+	var reader = new FileReader();
+    reader.onload = function(){
+      var output = document.getElementById('imgPreview');
+      output.src = reader.result;
+    };
+    alert(file);
+    reader.readAsDataURL(event.target.files[0]);
+}
+
+</script>
+
+
+</body>
+</html>
+
+

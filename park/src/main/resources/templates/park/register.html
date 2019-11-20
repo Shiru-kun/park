@@ -1,0 +1,105 @@
+<!DOCTYPE html >
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Parking</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+     <link rel="stylesheet" href="default_layout.css">
+     <link rel="stylesheet" type="text/css" th:href="@{/css/datepicker.min.css}" />
+
+    </head>
+<body>
+    
+     
+<div id="menu" >
+        <div class="inout" onclick="inOut()">
+                <span></span>
+                 <span></span>
+                 <span></span> 
+             </div>
+    <ul class="list">
+      <li>  
+            <a onclick="owner()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+                    Owner</i>
+                  </a>
+                  <div id="owner" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+                    <a th:href="register" class="w3-bar-item w3-button">Register</a>
+                    <a th:href="search" class="w3-bar-item w3-button">Plus info</a>                   
+                  </div>
+
+
+      </li>
+      <li>            <a onclick="car()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+            Car</i>
+          </a>
+          <div id="car" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+            <a href="car" class="w3-bar-item w3-button">Register</a>
+            <a href="searchCar" class="w3-bar-item w3-button">Plus info</a>                   
+          </div>
+</li>
+       <li>            <a onclick="parkAndPay()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+            Park and Pay
+          </a>
+          <div id="parkAndPay" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+            <a href="parkRegister" class="w3-bar-item w3-button">Register</a>
+            <a href="searchParkers" class="w3-bar-item w3-button">Plus info</a>                   
+          </div>
+</li>
+    </ul>
+
+
+</div>
+
+			
+<div id="content"> 
+            
+           <div class="styleForm">
+          <form method="post" id="formPark" th:object="${park}"  th:action="@{parkSave}" >
+          <fieldset>
+          <legend>Parking the car </legend>
+          <label>Days On Park:</label> <br/><input type="text" id="daysOn" name= "day" onKeyUp="funcMoney();" /><br/>
+          <label>Date Start:</label><br/> <input type="text" name= "dataStart" id="start"  readonly/><br/>
+          <label>Money:</label> <br/><input type="text" name="money" value="50" id="money" readonly/><br/>
+          <label>MoneyAwaited:</label> <br/><input type="text" name="moneyAwaited" id="moneyAwaited" readonly/><br/>
+          <label>Ends on Park</label>
+						  	      <input type="submit" value="save">
+ </fieldset>
+
+		<input class="form-control"  type="hidden" style="margin-bottom: 5px" id="final" name="dataID" data-multiple-dates=31 data-inline=true readonly="readonly" required="required"></input>
+			<br>
+			 <input  type="hidden" style="margin-bottom: 5px"  id="days" name="dataI" data-multiple-dates=31 data-inline=true readonly="readonly" required="required"></input>
+				
+
+          </form></div>
+			</div>
+
+
+<script src="menu.js">
+</script> 
+<script th:src="@{jquery-3.3.1.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/datepicker.min.js}"></script>
+   	<script>
+    
+   	var datepicker = $('#final').datepicker().data('datepicker');
+
+	   	datepicker.update({
+		    position: "bottom left",
+		   	dateFormat: "dd-mm-yyyy",
+		   	minDate: new Date(),
+		   	inline: true,
+			language:"",
+			multipleDatesSeparator: ";"
+		});
+   	   
+	   	
+   	
+	    /*]]>*/
+   	</script>
+</body>
+</html>
+
+

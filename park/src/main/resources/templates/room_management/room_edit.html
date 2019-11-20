@@ -1,0 +1,53 @@
+<!DOCTYPE html >
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+ <head><th:block th:replace="default">
+ 
+ </th:block>
+
+<link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+
+
+ </head>
+<body>
+
+	<div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"  style="margin-top:-700px;">
+	<div class="container">
+ <form th:object="${room}" method="post" th:action="@{saveRoom}" id="form">
+
+     
+<div class="col-sm-3" style="margin-right: 25px" >
+			<input class="form-control"  type="hidden" style="margin-bottom: 5px" id="dates" name="date" data-multiple-dates=31 data-inline=true disabled="disabled"></input>
+
+	 	</div>
+
+</form>
+	</div>
+
+
+
+	
+				
+</div>
+
+
+
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+var datepicker = $('#dates').datepicker().data('datepicker');
+	
+var b = [];
+var a =/*[[${daysofroom}]]*/;
+	for(var i=0;i<a.length-1;i++){
+		       b[i]=new Date(a[i]);
+                            }
+                datepicker.selectDate(b)
+
+
+
+/*]]>*/
+</script>
+
+</body>
+</html>

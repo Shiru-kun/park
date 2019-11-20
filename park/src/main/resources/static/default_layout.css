@@ -1,0 +1,97 @@
+* {
+    margin:0px;
+    padding:0px;
+    font-family:sans-serif; 
+}
+#menu { 
+position: fixed;
+width:200px;
+height: 1000px;
+background: black;
+left:-200px;
+}
+#content { 
+    position: fixed;
+    width:100%;
+    height: 1000px;
+    background: rosybrown;
+    left: 50px;
+    }
+#menu.active { 
+    left:0px;
+    }
+    #content.active { 
+        left:250px;
+        }
+    #menu .list { 
+    color:white;
+    list-style: none;
+    text-decoration: none;
+    padding: 10px 10px;
+    }
+
+    #menu .inout{
+position: absolute;
+left:210px;
+top: 20px;
+    }
+    #menu .inout span{
+       display: block;
+       width: 25px;
+       height: 1px;
+       background: gray;
+       margin: 3px 0px;
+            }
+
+/*form */
+.styleForm{
+          margin: 50px 100px 20px 70px ;
+          color:white; 
+}
+.styleForm input[type=text] {
+    border: none;
+    border-bottom: 2px solid rgb(99, 99, 224);
+    width: 500px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+
+}
+.styleForm input[type=text]:focus {
+    width: 100%;
+}
+
+/* button */
+.styleForm input[type=submit]{
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.styleForm input[type=submit]:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+/* Select  */
+select {
+    width: 50%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+/* table*/
+.tabled{
+	 border-collapse: collapse;
+    width: 100%;
+    margin:auto;
+	
+}
+.tabled th {
+    background-color: #4CAF50;
+    color: white;
+}
+.tabled th, td {
+    padding: 8px;
+    text-align: left; 
+    border-bottom: 1px solid #ddd;
+}

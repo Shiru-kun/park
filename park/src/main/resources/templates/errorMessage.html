@@ -1,0 +1,22 @@
+<!DOCTYPE html >
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Parking</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+     <link rel="stylesheet" href="default_layout.css">
+
+    </head>
+<body>
+    <div th:if="${not #strings.isEmpty(msg)}">
+      <span th:text="${msg}"></span>
+    
+    </div>
+     
+
+</body>
+
+
+</html>

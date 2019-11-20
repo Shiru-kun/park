@@ -1,0 +1,105 @@
+<!DOCTYPE html >
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Parking</title>
+    <meta charset="utf-8"/>
+ <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+ <link rel="stylesheet" type="text/css" th:href="@{/css/datepicker.min.css}" />
+ <link rel="stylesheet" type="text/css" th:href="@{/css/addons/datatables.min.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{default_layout.css}" />
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" th:href="@{/img/parking.png}">
+<link rel="stylesheet" th:href="@{css/uikit.min.css}" />
+<script th:src="@{js/uikit.min.js}"></script>
+<script th:src="@{js/uikit-icons.min.js}"></script>
+</head>
+
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a th:href="@{/}"><img alt="" th:src="@{/img/parked-car.png}" width="100px" /></a>
+      
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+  <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/logout}"> logout</a>
+      </li>
+      
+      </ul>
+ 
+  </div>
+  </nav>
+
+<!-- Menu left -->
+	<div class="container-fluid" >
+	 <div class="row">
+	 		 <nav class="col-md-2 d-none d-lg-block bg-dark text-white sidebar" style="height:700px">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column" sec:authorize-url="/car">
+       <li class="nav-item" ><span th:text="#{label.car}"></span>
+       <ul  class="nav flex-column"> 
+       <li> <a th:href="car">Register</a></li>
+       <li><a th:href="searchCar">  <span class="text-info"> + </span> </a></li>
+       
+       </ul>
+       
+       </li>
+         <li class="nav-item"><span th:text="#{label.owner}"></span>
+         <ul   class="nav flex-column"> 
+       <li> <a th:href="register">Register</a></li>
+       <li><a th:href="search">  <span class="text-info"> + </span> </a></li>
+       
+       </ul>
+       
+         </li>
+       <li class="nav-item"><span th:text="#{label.park}"></span>
+       <ul  class="nav flex-column"> 
+      <li> <a th:href="parkRegister">Register</a></li>
+       <li><a th:href="searchParkers">  <span class="text-info"> + </span> </a></li>
+        
+       </ul>
+       
+       </li>
+       <li class="nav-item"><span th:text="#{label.place}"></span>
+       <ul class="nav flex-column"> 
+    
+      </ul>
+       
+       </li>
+       
+    	  
+        </ul>
+    <a class="nav-link" th:href="@{${#httpServletRequest.requestURL}+'?lang=pt'}">  PT (Português) </a>
+ 	<a class="nav-link" th:href="@{${#httpServletRequest.requestURL}+'?lang=en'}">   EN (English)</a>
+       		
+        
+          </div>
+        </nav>
+	 </div>
+	</div>	
+   
+   
+
+
+
+<!-- Menu left -->
+
+
+
+<script th:src="@{menu.js}">
+</script>
+<script th:src="@{jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/datepicker.min.js}"></script>
+<script th:src="@{/js/addons/datatables.min.js}"></script>
+
+</body>
+
+
+</html>

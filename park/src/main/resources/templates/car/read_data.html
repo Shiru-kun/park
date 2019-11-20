@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+ <head><th:block th:replace="default">
+ 
+ </th:block>
+
+<link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+
+
+ </head>
+
+
+
+<body>
+	
+	<div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"  style="margin-top:-700px;">
+    <h1 th:text="#{label.carList}"></h1>
+	<table id="myTable" class="tabled">
+	<thead>
+	<tr>
+	<th> Brand </th>
+	<th>Plate</th>
+	<th>Owner</th>
+	
+	<th>operation</th>
+	</tr>
+	</thead>
+	       
+	
+	<tbody>
+	<tr th:each="car : ${cars}">
+	  
+	  <td  th:id="onPark" scope="col"><span th:text="${car.brand}"></span></td>
+	  <td scope="col"><span th:text="${car.plate}"></span></td>
+	  <td scope="col"><span th:text="${car.owner.name}+' '+${car.owner.telephone}"></span></td>
+	  <td><a th:href="${(#mvc.url('CC#delete').arg(0, car.id)).build()}"><i class="fa fa-trash"></i></a>
+	</td>	
+	</tr>
+	</tbody>
+	</table>
+</div>
+<!--  https://youtu.be/lIgFe20dYq4 modal spring boot -->
+ 
+<script th:src="fontaws.js"> </script>
+
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+
+</script>
+</body>
+</html>
